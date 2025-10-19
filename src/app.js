@@ -26,6 +26,10 @@ app.get('/api/health', (req, res) => {
   });
 });
 
+app.get('/', (req, res) => {
+  res.send('Welcome to the HealthMate API! 🏥');
+});
+
 // 404 handler
 app.use((req, res) => {
   res.status(404).json({
