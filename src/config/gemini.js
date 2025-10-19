@@ -10,7 +10,7 @@ const model = genAI.getGenerativeModel({
 
 // Alternative models configuration
 const MODEL_NAMES = {
-  FLASH_2:  'gemini-2.0-flash-exp', // Primary (working)
+  FLASH_2:    'gemini-2.0-flash-thinking-exp', // Primary (working)
   // Add more as you discover them
 };
 

@@ -4,8 +4,17 @@ const cors = require('cors');
 const app = express();
 
 // Middleware
+// app.use(cors({
+//   origin: '*',
+// }));
+
 app.use(cors({
-  origin: '*',
+  origin: [
+    'https://healthmate-frontend-omega.vercel.app',
+    'http://localhost:5173',
+     '*',
+  ],
+  credentials: true
 }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
