@@ -13,10 +13,15 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Routes
-app.use('/api/auth', require('./routes/auth'));
-app.use('/api/files', require('./routes/files'));
-app.use('/api/insights', require('./routes/insights'));
-app.use('/api/vitals', require('./routes/vitals'));
+// app.use('/api/auth', require('./routes/auth'));
+// app.use('/api/files', require('./routes/files'));
+// app.use('/api/insights', require('./routes/insights'));
+// app.use('/api/vitals', require('./routes/vitals'));
+// index.js mein
+app.use('/auth', require('./routes/auth'));
+app.use('/files', require('./routes/files'));
+app.use('/insights', require('./routes/insights'));
+app.use('/vitals', require('./routes/vitals'));
 
 // Health check
 app.get('/api/health', (req, res) => {
