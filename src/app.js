@@ -3,25 +3,10 @@ const cors = require('cors');
 
 const app = express();
 
-// ✅ Specific frontend origin (your deployed frontend)
-const allowedOrigin = 'https://healthmate-frontend-omega.vercel.app';
-
-// ✅ CORS setup
+// Middleware
 app.use(cors({
-  origin: allowedOrigin,
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-  credentials: true,
+  origin: '*',
 }));
-
-// ✅ Handle preflight (OPTIONS) requests manually (important for Vercel)
-app.options('*', cors({
-  origin: allowedOrigin,
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-  credentials: true,
-}));
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -34,10 +19,12 @@ app.use('/api/vitals', require('./routes/vitals'));
 // Health check
 app.get('/api/health', (req, res) => {
   console.log('✅ /api/health endpoint was called at:', new Date().toISOString());
+
   res.status(200).json({
     success: true,
     message: 'HealthMate API is running! 🏥',
     timestamp: new Date().toISOString()
+
   });
 });
 
